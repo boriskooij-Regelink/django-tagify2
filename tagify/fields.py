@@ -12,7 +12,9 @@ class TagField(forms.CharField):
 
     def __init__(self, *, place_holder='', delimiters=' ', data_list=None,
                  suggestions_chars=1, black_list=None, max_tags=None, pattern='', var_name='',
-                 max_length=None, min_length=None, strip=True, empty_value='', **kwargs):
+                 max_length=None, min_length=None, strip=True, empty_value='', 
+                 enforce_whitelist = False, duplicates=False, select=False, keep_invalid_tags=False, tooltip_texts=None, 
+                 dropdown_include_selected=False, **kwargs):
 
         self.max_length = max_length
         self.min_length = min_length
@@ -37,13 +39,20 @@ class TagField(forms.CharField):
         tag_args['maxTags'] = max_tags
         tag_args['pattern'] = pattern
         tag_args['var_name'] = var_name
+        tag_args['enforce_whitelist'] = enforce_whitelist
+        tag_args['duplicates'] = duplicates
+        tag_args['select'] = select
+        tag_args['keep_invalid_tags'] = keep_invalid_tags
+        tag_args['tooltip_texts'] = tooltip_texts
+        tag_args['dropdown_include_selected'] = dropdown_include_selected
 
         setattr(self.widget, 'tag_args', tag_args)
 
     def to_python(self, value):
         value = super().to_python(value)
         # return [v['value'] for v in json.loads(value)]
-        return value.split(self.delimiters)
+        return value #.split(self.delimiters)
+
 
     def set_var_name(self, value):
 
@@ -58,3 +67,4 @@ class TagField(forms.CharField):
         attrs = super(TagField, self).widget_attrs(widget)
         attrs['delimiters'] = self.delimiters
         return attrs
+    

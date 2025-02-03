@@ -8,7 +8,7 @@ def index(request):
     if request.method == 'POST':
         form = TagForm(request.POST)
         if form.is_valid():
-            return HttpResponse(str(form.cleaned_data['languages']))
+            return HttpResponse(str(form.cleaned_data['languages']) + "<br>" + str(form.cleaned_data['test']))
     else:
         form = TagForm()
     return render(request, 'index.html', {'form': form})

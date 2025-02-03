@@ -108,3 +108,6 @@ venv.bak/
 *.pyc
 *.sqlite3
 .static/*
+
+# vscode
+.vscode/

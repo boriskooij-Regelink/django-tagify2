@@ -9,6 +9,7 @@ from tagify.fields import TagField
 class TagForm(forms.Form):
     languages = TagField(label='languages', place_holder='add a language', delimiters=' ',
                          data_list=['Python', 'Java', 'PHP', 'Golang', 'JavaScript'], initial='Python Golang')
+    test = TagField(label="T",  data_list=["a", "b"], delimiters=",", enforce_whitelist=True, duplicates=True, keep_invalid_tags=True)
 
 
 def random_number():

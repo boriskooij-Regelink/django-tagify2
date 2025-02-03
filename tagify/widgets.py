@@ -30,5 +30,10 @@ class TagInput(forms.TextInput):
             "blacklist": [],
             "maxTags": None,
             'var_name': '',
+            'enforce_whitelist': False,
+            'duplicates': False,
+            'select': False,
+            'keep_invalid_tags': False,
+            'dropdown_include_selected': False,
         }
         return context

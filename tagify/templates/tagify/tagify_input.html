@@ -7,10 +7,22 @@
         {
         {% if widget.tag_args.maxTags != None %}maxTags:{{widget.tag_args.maxTags}},{%endif%}
         {% if widget.tag_args.pattern %}pattern:/{{widget.tag_args.pattern}}/,{%endif%}
+        //{% if widget.tag_args.maxTags == 1 %} mode:"select", {%endif%}
+        
         delimiters: "{{widget.tag_args.delimiters}}",
         whitelist: {{widget.tag_args.whitelist|safe}},
-        suggestionsMinChars:{{widget.tag_args.suggestionsMinChars}},
+        dropdown: {
+            enabled: {{widget.tag_args.suggestionsMinChars}}, 
+            classname:"tagify-dd-tag"
+            {% if widget.tag_args.dropdown_include_selected %},includeSelectedTags: true{%endif%}
+        },
+        // suggestionsMinChars:{{widget.tag_args.suggestionsMinChars}},
         blacklist:{{widget.tag_args.blacklist|safe}},
+        enforceWhitelist: "{{widget.tag_args.enforce_whitelist}}",
+        duplicates: "{{widget.tag_args.duplicates}}",
+        select: "{{widget.tag_args.select}}",
+        keepInvalidTags: "{{widget.tag_args.keep_invalid_tags}}",
+        {% if widget.tag_args.tooltip_texts != None %}texts:{{widget.tag_args.tooltip_texts|safe}},{%endif%}
         originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join('{{ widget.tag_args.delimiters }}')
     })
 </script>

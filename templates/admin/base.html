@@ -1,0 +1,64 @@
+{% extends 'admin/base.html' %}
+
+{% block extrastyle %}{{ block.super }}
+<style>
+
+html[data-theme="light"], :root {
+  --primary: #9774d5;
+  --secondary: #785cab;
+  --link-fg: #7c449b;
+  --link-selected-fg: #8f5bb2;
+  #--accent: #eeaa00;
+  --breadcrumbs-fg:rgb(219, 204, 247);
+  --breadcrumbs-bg:rgb(78, 61, 111);
+  #site-name {font-weight:700};
+  --tagify-dd-color-primary: black;
+  --tags-border-color: black;
+  --tag-hover: rgb(219, 204, 247) !important;
+}
+html[data-theme="dark"]{
+  --primary: #9774d5;
+  --secondary: #785cab;
+  --link-fg:rgb(201, 162, 221);
+  --link-selected-fg:rgb(246, 242, 249);
+  --breadcrumbs-fg:rgb(219, 204, 247);
+  --breadcrumbs-bg:rgb(78, 61, 111);
+  --selected-row:rgb(78, 61, 111);
+  --tagify-dd-bg-color: black;
+  --tagify-dd-color-primary: white;
+  --tags-border-color: white;
+  --border-color: #ddd;
+
+}
+
+.tagify {
+  border-radius: 4px !important;
+  border-color: var(--border-color) !important;
+  --tag-hover: rgb(219, 204, 247) !important;
+}
+.tagify--focus {outline: 1.5px solid var(--body-loud-color) !important;}
+.tagify-dd-tag .tagify__dropdown__item{
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 3px;
+  padding: .3em .5em;
+  border: 1px solid #CCC;
+  background: #F3F3F3;
+  margin: .2em;
+  font-size: .85em;
+  color: black;
+  transition: 0s;
+}
+.tagify__dropdown__item--selected {
+  background: var(--message-success-bg) !important;
+  border-color: var(--message-success-fg) !important;
+  color: var(--message-success-fg) !important;
+}
+.tagify-dd-tag .tagify__dropdown__item:hover{
+  background: var(--breadcrumbs-fg);
+  border-color: var(--primary);
+}
+
+
+</style>
+{% endblock %}

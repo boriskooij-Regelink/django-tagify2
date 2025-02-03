@@ -7,6 +7,9 @@ from example.models import People
 @admin.register(People)
 class PeopleAdmin(admin.ModelAdmin):
     form = PeopleAdminForm
+    list_display = ["languages", "test"]
+    list_filter = ["languages", "test"]
+    search_fields = ["languages", "test"]
 
     def save_model(self, request, obj, form, change):
         print(obj.languages)
