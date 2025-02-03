@@ -1,14 +1,14 @@
 <input placeholder="{{ widget.tag_args.placeholder }}" autocomplete="off" type="{{ widget.type }}"
        name="{{ widget.name }}"{% if widget.value != None %}
        value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %} />
+       {% comment %} {{ widget.tag_args|json_script:widget.name }} {% endcomment %}
 <script>
+    {% comment %} const {{ widget.name }}_args = JSON.parse(document.getElementById('{{ widget.name }}').textContent); {% endcomment %}
     {% if widget.tag_args.var_name %}
-        var {{widget.tag_args.var_name}} = {% endif %}  new Tagify(document.querySelector('input[name={{widget.name}}]'),
+        var {{ widget.tag_args.var_name }} = {% endif %}  new Tagify(document.querySelector('input[name={{widget.name}}]'),
         {
         {% if widget.tag_args.maxTags != None %}maxTags:{{widget.tag_args.maxTags}},{%endif%}
         {% if widget.tag_args.pattern %}pattern:/{{widget.tag_args.pattern}}/,{%endif%}
-        //{% if widget.tag_args.maxTags == 1 %} mode:"select", {%endif%}
-        
         delimiters: "{{widget.tag_args.delimiters}}",
         whitelist: {{widget.tag_args.whitelist|safe}},
         dropdown: {
@@ -18,10 +18,10 @@
         },
         // suggestionsMinChars:{{widget.tag_args.suggestionsMinChars}},
         blacklist:{{widget.tag_args.blacklist|safe}},
-        enforceWhitelist: "{{widget.tag_args.enforce_whitelist}}",
-        duplicates: "{{widget.tag_args.duplicates}}",
-        select: "{{widget.tag_args.select}}",
-        keepInvalidTags: "{{widget.tag_args.keep_invalid_tags}}",
+        {% if widget.tag_args.enforce_whitelist %}enforceWhitelist: true,{%endif%}
+        {% if widget.tag_args.duplicates %}duplicates: true,{%endif%}
+        {% if widget.tag_args.select %}select: true,{%endif%}
+        {% if widget.tag_args.keep_invalid_tags %}keepInvalidTags: true,{%endif%}
         {% if widget.tag_args.tooltip_texts != None %}texts:{{widget.tag_args.tooltip_texts|safe}},{%endif%}
         originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join('{{ widget.tag_args.delimiters }}')
     })

@@ -7,7 +7,7 @@ with open("README.rst", encoding='utf-8') as f:
 
 setup(
     name='django-tagify2',
-    version='1.0.20.dev3',
+    version='1.0.20.dev4',
     description='django tag input field using tagify.js',
     url='https://github.com/gojuukaze/django-tagify2',
     author="gojuukaze",
