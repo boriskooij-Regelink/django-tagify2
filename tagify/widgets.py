@@ -35,5 +35,6 @@ class TagInput(forms.TextInput):
             'select': False,
             'keep_invalid_tags': False,
             'dropdown_include_selected': False,
+            'dropdown_max_items': 10,
         }
         return context
