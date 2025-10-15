@@ -26,6 +26,7 @@ class TagField(models.TextField):
         self.tag_args['keep_invalid_tags'] = keep_invalid_tags
         self.tag_args['tooltip_texts'] = tooltip_texts
         self.tag_args['dropdown_include_selected'] = dropdown_include_selected
+        self.tag_args['dropdown_max_items'] = dropdown_max_items
         self.sort_values = sort_values
 
 
