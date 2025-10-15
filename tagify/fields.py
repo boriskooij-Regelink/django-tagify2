@@ -14,7 +14,7 @@ class TagField(forms.CharField):
                  suggestions_chars=1, black_list=None, max_tags=None, pattern='', var_name='',
                  max_length=None, min_length=None, strip=True, empty_value='', 
                  enforce_whitelist = False, duplicates=False, select=False, keep_invalid_tags=False, tooltip_texts=None, 
-                 dropdown_include_selected=False, **kwargs):
+                 dropdown_include_selected=False, dropdown_max_items=10,**kwargs):
 
         self.max_length = max_length
         self.min_length = min_length
@@ -45,6 +45,7 @@ class TagField(forms.CharField):
         tag_args['keep_invalid_tags'] = keep_invalid_tags
         tag_args['tooltip_texts'] = tooltip_texts
         tag_args['dropdown_include_selected'] = dropdown_include_selected
+        tag_args['dropdown_max_items'] = dropdown_max_items
 
         setattr(self.widget, 'tag_args', tag_args)
 
