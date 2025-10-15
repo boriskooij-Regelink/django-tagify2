@@ -6,7 +6,7 @@ class TagField(models.TextField):
     def __init__(self, place_holder='', delimiters=',', data_list=None, pattern='', var_name='',
                  suggestions_chars=0, black_list=None, max_tags=None, 
                  enforce_whitelist = False, duplicates=False, select=False, keep_invalid_tags=False, 
-                 tooltip_texts=None, dropdown_include_selected=False, sort_values=False, 
+                 tooltip_texts=None, dropdown_include_selected=False, dropdown_max_items=10, sort_values=False, 
                  *args, **kwargs):
         super().__init__(*args, **kwargs)
 
