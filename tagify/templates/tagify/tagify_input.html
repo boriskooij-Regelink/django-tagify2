@@ -15,6 +15,7 @@
             enabled: {{widget.tag_args.suggestionsMinChars}}, 
             classname:"tagify-dd-tag"
             {% if widget.tag_args.dropdown_include_selected %},includeSelectedTags: true{%endif%}
+            {% if widget.tag_args.dropdown_max_items %},maxItems: true{%endif%}
         },
         // suggestionsMinChars:{{widget.tag_args.suggestionsMinChars}},
         blacklist:{{widget.tag_args.blacklist|safe}},
